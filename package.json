@@ -1,0 +1,32 @@
+{
+  "name": "@ima-worldhealth/topic",
+  "version": "1.0.0",
+  "description": "Emit events across multiple processes via Redis",
+  "main": "index.js",
+  "scripts": {
+    "prepublishOnly": "yarn test",
+    "test": "./node_modules/.bin/eslint index.js && nyc ava",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "keywords": [
+    "events",
+    "redis",
+    "topic"
+  ],
+  "author": "jniles",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-ava": "^4.5.1",
+    "eslint-plugin-import": "^2.9.0",
+    "nyc": "^11.6.0",
+    "sinon": "^4.5.0"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "ioredis": "^3.2.2"
+  }
+}
