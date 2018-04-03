@@ -94,3 +94,24 @@ test.cb('#unsubscribe() will remove listeners from a channel', t => {
 
   topic.publish('ENDTEST', {});
 });
+
+test.cb('#disable() will disable all publisher', t => {
+  t.plan(1);
+  const channel = 'G';
+  const spy = sinon.spy();
+
+  // this should stop topic from calling all listeners
+  topic.disable();
+
+  topic.subscribe(channel, spy);
+  topic.publish(channel, payload());
+
+  topic.enable();
+
+  topic.subscribe('END', () => {
+    t.is(spy.callCount, 0);
+    t.end();
+  });
+
+  topic.publish('END', {});
+});
